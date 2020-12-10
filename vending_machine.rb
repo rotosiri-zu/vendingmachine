@@ -1,8 +1,25 @@
 
-coke = {id: 1, name: 'コーラ', price: 130, stock: 5}
-coffee = {id: 2, name: 'コーヒー', price: 130, stock: 5}
-water = { id: 3, name: '水', price: 100, stock: 5}
-tea = { id: 5, name: 'お茶', price: 130, stock: 5}
-orangejuice = {id: 6, name: 'オレンジジュース', price: 130, stock:5}
-all_item_list = [coke, coffee, water, tea, orangejuice]
-puts all_item_list
+require "./product.rb"
+require "./vending_machine1.rb"
+require "./user.rb"
+
+product_params = [
+  {name: "コーラ", price: 130},
+  {name: "コーヒー", price: 130},
+  {name: "水", price: 100},
+  {name: "お茶", price: 130},
+  {name: "オレンジジュース", price: 130},
+  {name: "ペプシコーラ", price: 130}
+]
+
+user = User.new
+
+vending_machine = Vending_machine.new(product_params)
+
+vending_machine.disp_products
+
+user.choosen_product(vending_machine.products)
+
+user.decide_quantity
+
+vending_machine.calculate_charges(user)
